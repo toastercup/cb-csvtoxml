@@ -1,0 +1,11 @@
+Flask
+Jinja2
+Werkzeug
+argparse
+distribute
+fuzzywuzzy
+python-dateutil
+six
+sure
+wsgiref
+rocket

@@ -1,4 +1,5 @@
 from flask import Flask, views, request, render_template, send_file
+from rocket import Rocket
 import os, csv, codecs
 from xml.sax.saxutils import escape
 from xml.dom.minidom import Document
@@ -83,3 +84,6 @@ def process_csv():
 def index():
 	return render_template('index.html')
 
+if __name__ == "__main__":
+        port = int(os.environ.get('PORT', 80))
+        Rocket((os.environ.get('ADDRESS', '0.0.0.0'), port), 'wsgi', {'wsgi_app': app}).start()
