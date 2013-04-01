@@ -62,12 +62,12 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 
-@app.route('/csvtoxml/')
+@app.route('/')
 def form():
 	return render_template('csvtoxml.html')
 
 
-@app.route('/csvtoxml/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_csv():
 	csv_file = request.files['formFile']
 	parsedXml = parse_csv(csv_file)
@@ -78,11 +78,6 @@ def process_csv():
 	xmlFile.close()
 
 	return send_file(fileName, 'text/xml', True, 'output.xml')
-
-
-@app.route('/')
-def index():
-	return render_template('index.html')
 
 if __name__ == "__main__":
         port = int(os.environ.get('PORT', 80))
